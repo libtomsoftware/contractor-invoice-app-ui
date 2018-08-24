@@ -1,9 +1,10 @@
 version: 2
+executorType: docker
 jobs:
   build:
     docker:
       - image: circleci/node:latest-browsers
-    working_directory: build
+    working_directory: /build
     steps:
       - run: echo "Attempting checkout."
       - checkout
@@ -14,7 +15,7 @@ jobs:
   deploy:
     docker:
       - image: circleci/node:latest-browsers
-    working_directory: build
+    working_directory: /build
     steps:
       - run: echo "Attempting deployment..."
       - run:
