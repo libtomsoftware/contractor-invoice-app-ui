@@ -10,6 +10,6 @@ export const CONFIG = {
         }
     },
     URL: {
-        API: 'http://46.41.128.254:13501/api'
+        API: 'https://cia-server.libtom.com/api'
     }
 };
