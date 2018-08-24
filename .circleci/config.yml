@@ -16,10 +16,10 @@ jobs:
       - image: circleci/node:latest-browsers
     steps:
       - run: echo "Attempting deployment..."
-      - run: sudo npm install firebase-tools
+      - run: sudo npm install -g firebase-tools
       - run:
              name: Deploy Master to Firebase
-             command: ln -s ./node_modules/.bin/firebase . && \ ./firebase --token=$FIREBASE_DEPLOY_TOKEN
+             command: firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
 workflows:
   version: 2
   build_and_deploy:
