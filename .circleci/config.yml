@@ -6,14 +6,14 @@ jobs:
     steps:
       - run: echo "Attempting checkout."
       - checkout
-      - run: echo "Attempting build."
+      - run: echo "Attempting build..."
       - run: npm run build
   deploy:
     docker:
       - image: circleci/node:latest-browsers
     working_directory: /build
     steps:
-      - run: echo "Attempting deployment."
+      - run: echo "Attempting deployment..."
       - run:
              name: Deploy Master to Firebase
              command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN

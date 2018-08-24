@@ -1,5 +1,5 @@
 {
-  "projects": {
-    "default": "contractor-invoice-app-ui"
-  }
+    "projects": {
+        "default": "contractor-invoice-app-ui"
+    }
 }
