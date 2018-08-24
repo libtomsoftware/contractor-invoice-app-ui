@@ -6,6 +6,8 @@ jobs:
     steps:
       - run: echo "Attempting checkout."
       - checkout
+      - run: echo "Installing dependencies..."
+      - run: npm install
       - run: echo "Attempting build..."
       - run: npm run build
   deploy:
