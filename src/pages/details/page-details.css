@@ -1,0 +1,15 @@
+.details-form-fields {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.details-form-fields .card {
+  margin: 0 5px;
+  min-width: 300px;
+}
+
+.details-form-fields .form-group.field-invalid input {
+  border-color: #E74C3C;
+  box-shadow: 0 0 10px #E74C3C;
+}

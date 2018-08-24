@@ -1,0 +1,21 @@
+.settings-form-fields {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    width: 90%;
+}
+
+.settings-form {
+    width: 90%;
+}
+
+.settings-form .card {
+    margin: 0 5px;
+    min-width: 300px;
+}
+
+.form-buttons {
+    text-align: center;
+}

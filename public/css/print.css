@@ -1,0 +1,49 @@
+.navbar,
+.cp-invoice-footer-border,
+.cp-invoice-quick-menu,
+.company-logo-white {
+  display: none !important;
+  visibility: hidden;
+}
+
+* {
+  color: black !important;
+  text-decoration: none !important;
+  background: transparent !important;
+}
+
+.cp-invoice p span {
+  color: #666 !important;
+}
+
+.cp-invoice-services {
+  border-top: solid 1px #aaa;
+}
+
+.cp-invoice-services .summary-subtotal .summary-data,
+.cp-invoice-footer-greetings,
+.cp-invoice-services table thead th {
+  background: #ddd !important;
+  color: #333;
+}
+
+.cp-invoice-services .cp-invoice-services-list th,
+.cp-invoice-services .cp-invoice-services-list td {
+  border-left: solid 1px #ddd !important;
+  border-right: solid 1px #ddd !important;
+  border-bottom: solid 1px #ddd !important;
+  border-top: solid 1px #ddd !important;
+}
+
+.cp-invoice-footer-greetings {
+  padding: 6px 0;
+}
+
+.cp-invoice-services .summary-total .summary-data {
+  background: #333 !important;
+  color: white !important;
+}
+
+.company-logo-color {
+  display: inline-block !important;
+}
