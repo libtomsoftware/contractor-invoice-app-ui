@@ -11,12 +11,12 @@ export default {
     invoice: {
         date: DateFormatter.getInvoiceDate(),
         number: DateFormatter.getInvoiceNumber(3),
-        weekBoundaries: DateFormatter.getWeekBoundaries()
+        periodBoundaries: DateFormatter.getPeriodBoundaries()
     },
     services: [
         {
-            description: 'Web development services, Telegraph, 6300012.0',
-            price: 550,
+            description: 'Software development consultancy',
+            price: 600,
             quantity: 5,
             discountPercentage: 0
         }

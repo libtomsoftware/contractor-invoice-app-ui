@@ -11,7 +11,7 @@ const Header = (props) => {
                 <h1>Invoice</h1>
                 <p><span>Invoice number</span> {invoice.number}</p>
                 <p><span>Invoice date</span> {invoice.date}</p>
-                <p><span>Week start / end date</span> {invoice.weekBoundaries}</p>
+                <p><span>Week start / end date</span> {invoice.periodBoundaries}</p>
             </div>
 
             <div className="cp-invoice-contrahents">

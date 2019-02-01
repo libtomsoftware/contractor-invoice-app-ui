@@ -162,6 +162,19 @@ class PageSettings extends Component {
                                                 </div>
                                             </div>
 
+                                            <div className="form-group">
+                                                <label className="control-label" htmlFor="price">
+                                                    Price
+                                                </label>
+                                                <input
+                                                    className="form-control"
+                                                    name="price"
+                                                    type="text"
+                                                    onChange={this.handleInputChange}
+                                                    value={settings.price}
+                                                />
+                                            </div>
+
                                             <div
                                                 className="form-group"
                                             >
