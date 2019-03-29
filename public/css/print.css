@@ -23,8 +23,16 @@
 .cp-invoice-services .summary-subtotal .summary-data,
 .cp-invoice-footer-greetings,
 .cp-invoice-services table thead th {
-  background: #ddd !important;
+  background: #eee !important;
   color: #333;
+  border: solid 1px #ddd;
+}
+
+.cp-invoice-services .summary-total .summary-data {
+  background: #eee !important;
+  color: #000 !important;
+  border: solid 1px #ddd;
+  font-weight: bold !important;
 }
 
 .cp-invoice-services .cp-invoice-services-list th,
@@ -37,11 +45,6 @@
 
 .cp-invoice-footer-greetings {
   padding: 6px 0;
-}
-
-.cp-invoice-services .summary-total .summary-data {
-  background: #333 !important;
-  color: white !important;
 }
 
 .company-logo-color {
