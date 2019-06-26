@@ -1,20 +1,14 @@
-import React from 'react';
-import { browserHistory } from 'react-router';
-import './page-home.css';
-
+import React from "react";
+import history from "../../providers/history.js";
+import "./page-home.css";
 class PageHome extends React.Component {
+  routeTo(path) {
+    history.push(path);
+  }
 
-    routeTo(path) {
-        browserHistory.push(path);
-    }
-
-    render() {
-        return (
-            <div className="page page-home">
-                home page
-            </div>
-        );
-    }
+  render() {
+    return <div className="page page-home">home page</div>;
+  }
 }
 
 export default PageHome;

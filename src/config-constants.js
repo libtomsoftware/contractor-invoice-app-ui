@@ -10,6 +10,6 @@ export const CONFIG = {
     }
   },
   URL: {
-    API: "http://cia-server.libtom.com/api"
+    API: "https://cia-server.libtom.com/api"
   }
 };

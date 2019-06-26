@@ -1,9 +1,13 @@
 .nav-item a,
 .nav-item i {
-    color: white;
+  color: white;
 }
 
 .nav-item:hover {
-    background-color: rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+
+.navbar-brand-link-toggle {
+  text-indent: -9999px;
 }
