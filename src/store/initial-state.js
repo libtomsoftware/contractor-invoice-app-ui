@@ -16,7 +16,7 @@ export default {
   services: [
     {
       description:
-        "Software development consultancy, Purchase Order 4500216768",
+        "Front-End Development Consultancy - Deutsche Bank AG London - 11111 (EUR)-UK_2019_DB UK_ GM_ENTERPRISE RISK_dbPalace SA_2019 (KE012394-001)",
       price: 600,
       quantity: 5,
       discountPercentage: 0
