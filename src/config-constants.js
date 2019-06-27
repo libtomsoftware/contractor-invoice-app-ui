@@ -10,6 +10,6 @@ export const CONFIG = {
     }
   },
   URL: {
-    API: "https://cia-server.libtom.com/api"
+    API: "https://1k4n94l4og.execute-api.eu-west-2.amazonaws.com/prod/api"
   }
 };
