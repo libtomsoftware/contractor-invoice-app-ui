@@ -55,7 +55,7 @@ class PageHome extends React.Component {
         )}
         {settings &&
           (!invoices || (!invoices.length && <p>No saved invoices...</p>))}
-        {!settings && <p>No settings available...</p>}
+        {!settings && <p>Loading...</p>}
       </div>
     );
   }
