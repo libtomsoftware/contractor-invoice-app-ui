@@ -8,6 +8,7 @@ export default {
   settings: null,
   client: null,
   company: null,
+  invoices: [],
   invoice: {
     date: DateFormatter.getInvoiceDate(),
     number: DateFormatter.getInvoiceNumber(3),

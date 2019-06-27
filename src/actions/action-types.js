@@ -10,6 +10,7 @@ export const MENU_HIDE = "MENU_HIDE";
 export const CLIENT_UPDATE = "CLIENT_UPDATE";
 export const COMPANY_UPDATE = "COMPANY_UPDATE";
 export const INVOICE_UPDATE = "INVOICE_UPDATE";
+export const INVOICES_UPDATE = "INVOICES_UPDATE";
 export const SERVICES_UPDATE = "SERVICES_UPDATE";
 export const SETTINGS_UPDATE = "SETTINGS_UPDATE";
 /* eslint-enable */

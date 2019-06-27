@@ -6,7 +6,8 @@ export const CONFIG = {
     },
     INFO: {
       DETAILS_UPDATED: "Details updated!",
-      SETTINGS_UPDATED: "Settings updated!"
+      SETTINGS_UPDATED: "Settings updated!",
+      INVOICE_SAVED: "Invoice has been saved!"
     }
   },
   URL: {

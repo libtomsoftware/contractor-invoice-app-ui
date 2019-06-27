@@ -50,3 +50,7 @@
 .company-logo-color {
   display: inline-block !important;
 }
+
+.invoice-actions {
+  display: none;
+}

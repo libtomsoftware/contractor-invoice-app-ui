@@ -1,0 +1,36 @@
+.page-home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.invoices-table {
+  margin: 24px;
+  max-height: 80%;
+  overflow-y: auto;
+}
+
+.invoices-table th {
+  text-align: center;
+}
+
+.invoice-action {
+  display: flex;
+}
+
+.invoice-action a {
+  color: #aaa;
+}
+
+.invoice-action .fa-file-invoice {
+  color: #00bc8c;
+}
+
+.invoice-action i {
+  display: none;
+}
+
+.invoice-action a:hover {
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
