@@ -44,7 +44,7 @@ class PageHome extends React.Component {
 
     return (
       <div className="page page-home">
-        {settings && invoices.length && (
+        {settings && !!invoices.length && (
           <div className="invoices-table">
             <Invoices
               invoices={invoices}
