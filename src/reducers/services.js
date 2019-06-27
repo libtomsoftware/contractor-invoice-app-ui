@@ -1,14 +1,12 @@
-import * as types from '../actions/action-types';
-import initialState from '../store/initial-state';
+import * as types from "../actions/action-types";
+import initialState from "../store/initial-state";
 
 export default function servicesReducer(state = initialState.services, action) {
-
-    switch (action.type) {
+  switch (action.type) {
     case types.SERVICES_UPDATE:
-        return action.services;
+      return action.services;
 
     default:
-        return state;
-    }
-
+      return state;
+  }
 }
