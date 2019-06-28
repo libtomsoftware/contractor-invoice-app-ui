@@ -14,16 +14,13 @@
   text-align: center;
 }
 
+.invoices-table td,
+.invoice-action a {
+  line-height: 36px;
+}
+
 .invoice-action {
   display: flex;
-}
-
-.invoice-action a {
-  color: #aaa;
-}
-
-.invoice-action .fa-file-invoice {
-  color: #00bc8c;
 }
 
 .invoice-action i {

@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
-import { bindActionCreators } from "redux";
-
-import * as toastActions from "../actions/toast-actions";
-import * as loaderActions from "../actions/loader-actions";
-
 import Loader from "../components/common/loader/loader";
 import Toast from "../components/common/toast/toast";
 import Navbar from "../components/common/navbar/navbar";
@@ -31,8 +26,6 @@ class Layout extends Component {
       this.setState({
         path
       });
-      this.props.actions.toast.hide();
-      this.props.actions.loader.hide();
     }
   }
 
@@ -63,16 +56,4 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: {
-      toast: bindActionCreators(toastActions, dispatch),
-      loader: bindActionCreators(loaderActions, dispatch)
-    }
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Layout);
+export default connect(mapStateToProps)(Layout);

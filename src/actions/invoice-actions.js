@@ -1,6 +1,7 @@
 import * as types from "./action-types";
 import axios from "axios";
 import * as toastActions from "./toast-actions";
+import * as loaderActions from "./loader-actions";
 
 import { CONFIG } from "../config-constants";
 
@@ -42,14 +43,32 @@ export function save(invoice) {
   };
 }
 
+export function remove(id) {
+  return async function(dispatch) {
+    try {
+      const { data } = await axios.delete(
+        `${CONFIG.URL.API}/data/invoice/${id}`
+      );
+
+      dispatch(getInvoicesListUpdateEvent(data));
+
+      showToast(CONFIG.MESSAGE.INFO.INVOICE_DELETED, "success", dispatch);
+    } catch (error) {
+      showToast(CONFIG.MESSAGE.ERROR.SOMETHING_WRONG, "danger", dispatch);
+    }
+  };
+}
+
 export function fetchAll() {
   return async function(dispatch) {
     try {
+      loaderActions.show()(dispatch);
       const result = await axios.get(`${CONFIG.URL.API}/data/invoices`);
 
       dispatch(getInvoicesListUpdateEvent(result.data));
     } catch (error) {
       showToast(CONFIG.MESSAGE.ERROR.SOMETHING_WRONG, "danger", dispatch);
     }
+    loaderActions.hide()(dispatch);
   };
 }

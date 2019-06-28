@@ -2,7 +2,12 @@ import React from "react";
 import InvoiceEntry from "./invoice-entry";
 
 const Invoices = props => {
-  const { invoices, settings, viewCurrentInvoiceMethod } = props;
+  const {
+    invoices,
+    settings,
+    viewCurrentInvoiceMethod,
+    deleteInvoiceMethod
+  } = props;
 
   return (
     <table className="table table-hover">
@@ -22,6 +27,7 @@ const Invoices = props => {
             settings={settings}
             key={index}
             viewCurrentInvoiceMethod={viewCurrentInvoiceMethod}
+            deleteInvoiceMethod={deleteInvoiceMethod}
           />
         ))}
       </tbody>

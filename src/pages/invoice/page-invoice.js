@@ -11,6 +11,7 @@ import * as invoiceActions from "../../actions/invoice-actions";
 import DataLoader from "../../services/data-loader";
 import Invoice from "../../components/invoice";
 import InvoiceQuickMenu from "../../components/invoice/quick-menu";
+import InvoiceActions from "../../components/invoice/invoice-actions";
 import Footer from "../../components/common/footer/footer";
 import { withRouter } from "react-router";
 import "./page-invoice.css";
@@ -20,14 +21,26 @@ class PageInvoice extends Component {
     super();
 
     this.saveInvoice = this.saveInvoice.bind(this);
+    this.createNewInvoice = this.createNewInvoice.bind(this);
+
+    this.state = {
+      isExistingInvoice: false
+    };
   }
 
   componentWillMount() {
     const { params } = this.props;
 
     if (params && params.type === "current") {
+      this.setState({
+        isExistingInvoice: true
+      });
       return;
     }
+
+    this.setState({
+      isExistingInvoice: false
+    });
 
     DataLoader.load(this.props, ["settings", "company", "client"]);
   }
@@ -50,43 +63,35 @@ class PageInvoice extends Component {
   }
 
   createNewInvoice() {
+    this.setState({
+      isExistingInvoice: false
+    });
     history.push("/invoice");
   }
 
-  printCurrentInvoice() {
+  printExistingInvoice() {
     window.print();
   }
 
   render() {
-    const { company, client, params, settings } = this.props;
+    const { company, client, settings } = this.props;
 
     return (
       <div className="page page-invoice">
+        {this.state.isExistingInvoice && (
+          <div className="existing-invoice-ribbon">existing invoice</div>
+        )}
         {!!settings && !!company && !!client && (
           <Invoice settings={settings} company={company} client={client} />
         )}
         <InvoiceQuickMenu />
-        <div className="invoice-actions">
-          <button className="btn btn-secondary" onClick={this.viewAllInvoices}>
-            View All
-          </button>
-          <button
-            className="btn btn-primary"
-            onClick={this.printCurrentInvoice}
-          >
-            Print
-          </button>
-          {(!params || params.type !== "current") && (
-            <button className="btn btn-danger" onClick={this.saveInvoice}>
-              Save
-            </button>
-          )}
-          {params && params.type === "current" && (
-            <button className="btn btn-success" onClick={this.createNewInvoice}>
-              Create new
-            </button>
-          )}
-        </div>
+        <InvoiceActions
+          viewAllInvoices={this.viewAllInvoices}
+          printExistingInvoice={this.printExistingInvoice}
+          saveInvoice={this.saveInvoice}
+          createNewInvoice={this.createNewInvoice}
+          isExisting={this.state.isExistingInvoice}
+        />
         <Footer />
       </div>
     );

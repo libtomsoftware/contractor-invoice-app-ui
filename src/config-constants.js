@@ -7,10 +7,13 @@ export const CONFIG = {
     INFO: {
       DETAILS_UPDATED: "Details updated!",
       SETTINGS_UPDATED: "Settings updated!",
-      INVOICE_SAVED: "Invoice has been saved!"
+      INVOICE_SAVED: "Invoice has been saved!",
+      INVOICE_DELETED: "Invoice has been deleted!"
     }
   },
   URL: {
-    API: "https://3dn3qprgb4.execute-api.eu-west-2.amazonaws.com/preprod/api"
+    //API: "https://3dn3qprgb4.execute-api.eu-west-2.amazonaws.com/preprod/api",
+    //API: "https://3dn3qprgb4.execute-api.eu-west-2.amazonaws.com/preprod/api"
+    API: "http://localhost:5002/api"
   }
 };

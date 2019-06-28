@@ -1,6 +1,7 @@
 import axios from "axios";
 import * as types from "./action-types";
 import * as toastActions from "./toast-actions";
+import * as loaderActions from "./loader-actions";
 import { CONFIG } from "../config-constants";
 import Company from "../models/company";
 
@@ -26,6 +27,7 @@ export function update(company) {
 
 export function load() {
   return async function(dispatch) {
+    loaderActions.show()(dispatch);
     try {
       const { data } = await axios.get(`${CONFIG.URL.API}/data/company`);
 
@@ -33,16 +35,19 @@ export function load() {
     } catch (error) {
       console.warn("Company loading error:", error);
     }
+    loaderActions.hide()(dispatch);
   };
 }
 
 export function save(company) {
   return async function(dispatch) {
+    loaderActions.show()(dispatch);
     try {
       await axios.post(`${CONFIG.URL.API}/data/company`, company);
       showToast(CONFIG.MESSAGE.INFO.DETAILS_UPDATED, "success", dispatch);
     } catch (error) {
       showToast(CONFIG.MESSAGE.ERROR.FORM_INVALID, "danger", dispatch);
     }
+    loaderActions.hide()(dispatch);
   };
 }

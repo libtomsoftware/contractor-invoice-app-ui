@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as types from "./action-types";
+import * as loaderActions from "./loader-actions";
 import { CONFIG } from "../config-constants";
 import Settings from "../models/settings";
 import * as toastActions from "./toast-actions";
@@ -26,6 +27,7 @@ export function update(settings) {
 
 export function load() {
   return async function(dispatch) {
+    loaderActions.show()(dispatch);
     try {
       const { data } = await axios.get(`${CONFIG.URL.API}/data/settings`);
 
@@ -33,16 +35,19 @@ export function load() {
     } catch (error) {
       console.warn("Settings loading error:", error);
     }
+    loaderActions.hide()(dispatch);
   };
 }
 
 export function save(settings) {
   return async function(dispatch) {
+    loaderActions.show()(dispatch);
     try {
       await axios.post(`${CONFIG.URL.API}/data/settings`, settings);
       showToast(CONFIG.MESSAGE.INFO.SETTINGS_UPDATED, "success", dispatch);
     } catch (error) {
       showToast(CONFIG.MESSAGE.ERROR.FORM_INVALID, "danger", dispatch);
     }
+    loaderActions.hide()(dispatch);
   };
 }

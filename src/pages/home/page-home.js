@@ -16,6 +16,7 @@ class PageHome extends React.Component {
     super();
 
     this.viewCurrentInvoice = this.viewCurrentInvoice.bind(this);
+    this.deleteInvoice = this.deleteInvoice.bind(this);
   }
 
   componentDidMount() {
@@ -39,6 +40,10 @@ class PageHome extends React.Component {
     history.push("/invoice/current");
   }
 
+  deleteInvoice(id) {
+    this.props.actions.invoice.remove(id);
+  }
+
   render() {
     const { invoices, settings } = this.props;
 
@@ -50,12 +55,12 @@ class PageHome extends React.Component {
               invoices={invoices}
               settings={settings}
               viewCurrentInvoiceMethod={this.viewCurrentInvoice}
+              deleteInvoiceMethod={this.deleteInvoice}
             />
           </div>
         )}
         {settings &&
           (!invoices || (!invoices.length && <p>No saved invoices...</p>))}
-        {!settings && <p>Loading...</p>}
       </div>
     );
   }
