@@ -51,6 +51,7 @@
   display: inline-block !important;
 }
 
-.invoice-actions {
+.invoice-actions,
+.existing-invoice-ribbon {
   display: none;
 }

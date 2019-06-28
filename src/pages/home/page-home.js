@@ -37,7 +37,7 @@ class PageHome extends React.Component {
     actions.invoice.update(entry.invoice);
     actions.services.update(entry.services);
 
-    history.push("/invoice/current");
+    history.push("invoice/current");
   }
 
   deleteInvoice(id) {

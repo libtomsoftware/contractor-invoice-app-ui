@@ -12,8 +12,6 @@ export const CONFIG = {
     }
   },
   URL: {
-    //API: "https://3dn3qprgb4.execute-api.eu-west-2.amazonaws.com/preprod/api",
-    //API: "https://3dn3qprgb4.execute-api.eu-west-2.amazonaws.com/preprod/api"
     API: "http://localhost:5002/api"
   }
 };
