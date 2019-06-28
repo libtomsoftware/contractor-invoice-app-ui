@@ -4,6 +4,7 @@
   border: solid 1px white;
   width: 90%;
   max-width: 1024px;
+  position: relative;
 }
 
 .cp-invoice-inner {
@@ -43,7 +44,7 @@
 
 .cp-invoice p span {
   display: inline-block;
-  color: #448EBD;
+  color: #448ebd;
   margin-right: 0.5em;
 }
 
@@ -74,7 +75,7 @@
 }
 
 .cp-invoice-services thead {
-  background: #448EBD;
+  background: #448ebd;
   color: white;
 }
 
@@ -106,7 +107,7 @@
 }
 
 .cp-invoice-services .summary-total .summary-data {
-  background: #448EBD;
+  background: #448ebd;
   color: white;
 }
 
@@ -154,7 +155,7 @@
 .cp-invoice-footer-border-inner {
   margin-left: -15px;
   width: 30px;
-  background: #448EBD;
+  background: #448ebd;
 }
 
 .cp-invoice-footer-border-mask {
@@ -165,7 +166,7 @@
 
 .cp-invoice-footer-border-left {
   float: left;
-  background: #448EBD;
+  background: #448ebd;
 }
 
 .cp-invoice-footer-border-right {
@@ -176,5 +177,24 @@
 .cp-invoice-footer-greetings {
   width: 100%;
   text-align: center;
-  color: #448EBD;
+  color: #448ebd;
+}
+
+.cp-existing-invoice-ribbon {
+  position: absolute;
+  top: 50px;
+  left: -2px;
+  background: #f39c12;
+  color: white;
+  transform-origin: 0 0;
+  transform: rotate(-20deg) skew(-20deg);
+
+  width: 250px;
+  text-align: center;
+  line-height: 21px;
+}
+
+.cp-existing-invoice-ribbon span {
+  display: inline-block;
+  transform: skew(20deg);
 }

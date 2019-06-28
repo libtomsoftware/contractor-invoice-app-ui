@@ -7,15 +7,3 @@
 .invoice-actions button {
   margin: 0 12px;
 }
-
-.existing-invoice-ribbon {
-  position: absolute;
-  top: 20px;
-  left: -50px;
-  background: #f39c12;
-  color: white;
-  transform: rotate(-20deg);
-  width: 250px;
-  text-align: center;
-  line-height: 21px;
-}

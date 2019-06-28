@@ -16,7 +16,7 @@ export default (
     <IndexRedirect to="home" />
     <Route path="home" component={PageHome} />
     <Route path="invoice" component={PageInvoice} />
-    <Route path="invoice/:type" component={PageInvoice} />
+    <Route path="invoice-existing" component={PageInvoice} />
     <Route path="details" component={PageDetails} />
     <Route path="settings" component={PageSettings} />
     <Redirect from="*" to="home" />

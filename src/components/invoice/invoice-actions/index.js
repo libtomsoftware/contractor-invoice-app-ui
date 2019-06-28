@@ -14,17 +14,19 @@ const InvoiceActions = props => {
       <button className="btn btn-secondary" onClick={viewAllInvoices}>
         View All
       </button>
-      <button className="btn btn-success" onClick={printExistingInvoice}>
-        Print
-      </button>
-      {!isExisting && (
-        <button className="btn btn-danger" onClick={saveInvoice}>
-          Save
+      {isExisting && (
+        <button className="btn btn-success" onClick={printExistingInvoice}>
+          Print
         </button>
       )}
       {isExisting && (
         <button className="btn btn-info" onClick={createNewInvoice}>
           Create new
+        </button>
+      )}
+      {!isExisting && (
+        <button className="btn btn-danger" onClick={saveInvoice}>
+          Save
         </button>
       )}
     </div>

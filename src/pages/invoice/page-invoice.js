@@ -29,18 +29,16 @@ class PageInvoice extends Component {
   }
 
   componentWillMount() {
-    const { params } = this.props;
-
-    if (params && params.type === "current") {
-      this.setState({
-        isExistingInvoice: true
-      });
-      return;
-    }
+    const { location } = this.props;
+    const isExisting = location.pathname.includes("invoice-existing");
 
     this.setState({
-      isExistingInvoice: false
+      isExistingInvoice: isExisting
     });
+
+    if (isExisting) {
+      return;
+    }
 
     DataLoader.load(this.props, ["settings", "company", "client"]);
   }
@@ -75,23 +73,38 @@ class PageInvoice extends Component {
 
   render() {
     const { company, client, settings } = this.props;
+    const { isExistingInvoice } = this.state;
+    const hasEnoughInvoiceData = !!company && !!client && !!settings;
 
     return (
       <div className="page page-invoice">
-        {this.state.isExistingInvoice && (
-          <div className="existing-invoice-ribbon">existing invoice</div>
+        {hasEnoughInvoiceData && (
+          <Invoice
+            settings={settings}
+            company={company}
+            client={client}
+            isExistingInvoice={isExistingInvoice}
+          />
         )}
-        {!!settings && !!company && !!client && (
-          <Invoice settings={settings} company={company} client={client} />
+        {hasEnoughInvoiceData && <InvoiceQuickMenu />}
+        {hasEnoughInvoiceData && (
+          <InvoiceActions
+            viewAllInvoices={this.viewAllInvoices}
+            printExistingInvoice={this.printExistingInvoice}
+            saveInvoice={this.saveInvoice}
+            createNewInvoice={this.createNewInvoice}
+            isExisting={this.state.isExistingInvoice}
+          />
         )}
-        <InvoiceQuickMenu />
-        <InvoiceActions
-          viewAllInvoices={this.viewAllInvoices}
-          printExistingInvoice={this.printExistingInvoice}
-          saveInvoice={this.saveInvoice}
-          createNewInvoice={this.createNewInvoice}
-          isExisting={this.state.isExistingInvoice}
-        />
+        {!hasEnoughInvoiceData && (
+          <div className="card border-warning mb-3">
+            <div className="card-header">Something went wrong...</div>
+            <div className="card-body">
+              <h4 className="card-title">Oops...</h4>
+              <p className="card-text">Not enough data for invoice available</p>
+            </div>
+          </div>
+        )}
         <Footer />
       </div>
     );

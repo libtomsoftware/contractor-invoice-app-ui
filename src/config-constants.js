@@ -12,6 +12,6 @@ export const CONFIG = {
     }
   },
   URL: {
-    API: "http://localhost:5002/api"
+    API: "https://1k4n94l4og.execute-api.eu-west-2.amazonaws.com/prod/api"
   }
 };

@@ -17,10 +17,22 @@ class Invoice extends Component {
   }
 
   render() {
-    const { settings, invoice, company, client, services } = this.props;
+    const {
+      settings,
+      invoice,
+      company,
+      client,
+      services,
+      isExistingInvoice
+    } = this.props;
 
     return (
       <div className="cp-invoice">
+        {isExistingInvoice && (
+          <div className="cp-existing-invoice-ribbon">
+            <span>existing invoice</span>
+          </div>
+        )}
         <BrandBar company={company} />
         <div className="cp-invoice-inner">
           <Header client={client} company={company} invoice={invoice} />
