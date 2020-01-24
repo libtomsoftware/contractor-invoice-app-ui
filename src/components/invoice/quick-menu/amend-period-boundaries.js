@@ -12,11 +12,16 @@ class AmendPeriodBoundaries extends Component {
     super();
 
     this.state = {
-      isWeekly: true
+      isWeekly: false,
+      isSundayFirstDay: false
     };
 
     this.changeDates = this.changeDates.bind(this);
+    this.changeFirstDay = this.changeFirstDay.bind(this);
     this.handlePeriodTypeChange = this.handlePeriodTypeChange.bind(this);
+    this.handleFirstDayOfWeekChange = this.handleFirstDayOfWeekChange.bind(
+      this
+    );
   }
 
   changeDates(e) {
@@ -25,6 +30,20 @@ class AmendPeriodBoundaries extends Component {
     invoice.periodBoundaries = DateFormatter.getPeriodBoundaries(
       this.state.isWeekly,
       e.target.value
+    );
+
+    this.props.actions.invoice.update(invoice);
+  }
+
+  changeFirstDay() {
+    const invoice = Object.assign({}, this.props.invoice);
+    const value = document.getElementById("invoicePeriodBoundaries").value;
+    const date = value && value !== "" ? value : moment().format("YYYY-MM-DD");
+
+    invoice.periodBoundaries = DateFormatter.getPeriodBoundaries(
+      this.state.isWeekly,
+      date,
+      this.state.isSundayFirstDay
     );
 
     this.props.actions.invoice.update(invoice);
@@ -44,6 +63,17 @@ class AmendPeriodBoundaries extends Component {
             value: date
           }
         });
+      }
+    );
+  }
+
+  handleFirstDayOfWeekChange(value) {
+    this.setState(
+      {
+        isSundayFirstDay: value
+      },
+      () => {
+        this.changeFirstDay();
       }
     );
   }
@@ -79,6 +109,24 @@ class AmendPeriodBoundaries extends Component {
                 Is weekly timesheet?
               </label>
             </div>
+            {!!this.state.isWeekly && (
+              <div className="custom-control custom-checkbox">
+                <input
+                  type="checkbox"
+                  className="custom-control-input"
+                  name="firstday"
+                  id="firstday"
+                  onClick={() => {
+                    this.handleFirstDayOfWeekChange(
+                      !this.state.isSundayFirstDay
+                    );
+                  }}
+                />
+                <label className="custom-control-label" htmlFor="firstday">
+                  Is Sunday first day of the week?
+                </label>
+              </div>
+            )}
           </div>
         </fieldset>
       </div>

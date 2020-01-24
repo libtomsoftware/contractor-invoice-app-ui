@@ -1,25 +1,32 @@
-  [type="date"] {
-    background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
-  }
-  [type="date"]::-webkit-inner-spin-button {
-    display: none;
-  }
-  [type="date"]::-webkit-calendar-picker-indicator {
-    opacity: 0;
-  }
+[type="date"] {
+  background: #fff
+    url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)
+    97% 50% no-repeat;
+}
+[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
 
-  .cp-invoice-quick-menu {
-    margin: 24px 12px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-  }
+.cp-invoice-quick-menu {
+  margin: 24px 12px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
 
-  .cp-invoice-quick-menu .btn {
-    margin: 0 6px;
-  }
+.cp-invoice-quick-menu .btn {
+  margin: 0 6px;
+}
 
-  .invoice-form-amend.card {
-    margin: 0 12px;
-    padding: 12px;
-  }
+.invoice-form-amend.card {
+  margin: 0 12px;
+  padding: 12px;
+}
+
+.invoice-form-amend .custom-control {
+  margin: 6px;
+  text-align: left;
+}

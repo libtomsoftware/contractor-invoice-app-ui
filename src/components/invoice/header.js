@@ -16,7 +16,7 @@ const Header = props => {
           <span>Invoice date</span> {invoice.date}
         </p>
         <p>
-          <span>Week start / end date</span> {invoice.periodBoundaries}
+          <span>Period start / end date</span> {invoice.periodBoundaries}
         </p>
       </div>
 
