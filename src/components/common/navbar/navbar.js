@@ -27,6 +27,11 @@ class Navbar extends Component {
         icon: "fa-id-card"
       },
       {
+        route: "/services",
+        label: "services",
+        icon: "fa-tasks"
+      },
+      {
         route: "/settings",
         label: "settings",
         icon: "fa-cog"
@@ -93,7 +98,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Navbar);
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

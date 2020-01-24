@@ -11,7 +11,10 @@ const InvoiceEntry = props => {
   const { currency, vatPercentage } = settings;
   const [showDelete, setShowDelete] = useState(false);
   const [invoiceToDelete, setInvoiceToDelete] = useState(null);
-  const services = Calculator.computeServices(entry.services, vatPercentage);
+  const services = Calculator.computeServices(
+    entry.services || [],
+    vatPercentage
+  );
 
   let { totalDue } = Calculator.computeSubtotalDiscountAndVat(services);
 

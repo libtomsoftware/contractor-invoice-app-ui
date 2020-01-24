@@ -7,6 +7,7 @@ export const CONFIG = {
     INFO: {
       DETAILS_UPDATED: "Details updated!",
       SETTINGS_UPDATED: "Settings updated!",
+      SERVICES_UPDATED: "Services updated!",
       INVOICE_SAVED: "Invoice has been saved!",
       INVOICE_DELETED: "Invoice has been deleted!"
     }

@@ -14,13 +14,5 @@ export default {
     number: DateFormatter.getInvoiceNumber(3),
     periodBoundaries: DateFormatter.getPeriodBoundaries()
   },
-  services: [
-    {
-      description:
-        "Technical Lead Engineering Consultancy - RBS London - RBS1WK00075277 (602031164)",
-      price: 600,
-      quantity: 5,
-      discountPercentage: 0
-    }
-  ]
+  services: null
 };

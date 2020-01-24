@@ -1,0 +1,47 @@
+.services-form-fields {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  width: 90%;
+}
+
+.page-services .card {
+  margin: 0 15px;
+  min-width: 300px;
+}
+
+.form-buttons {
+  text-align: center;
+}
+
+.services-table {
+  width: 100%;
+}
+
+.services-table th {
+  text-align: center;
+  background: #222;
+  padding: 6px;
+}
+
+.services-table td {
+  min-width: 100px;
+  max-width: 300px;
+  padding: 6px;
+  text-align: center;
+}
+
+.services-table th:first-child,
+.services-table td:first-child {
+  text-align: left;
+}
+
+.add-new-service {
+  min-width: 400px;
+}
+
+.remove-btn button {
+  margin: 24px 12px 0 12px;
+}

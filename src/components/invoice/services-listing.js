@@ -4,7 +4,10 @@ import Calculator from "../../services/calculator";
 const ServicesListing = props => {
   const { currency, vatPercentage } = props.settings;
 
-  const services = Calculator.computeServices(props.services, vatPercentage);
+  const services = Calculator.computeServices(
+    props.services || [],
+    vatPercentage
+  );
 
   let {
     subtotal,
@@ -29,6 +32,10 @@ const ServicesListing = props => {
           </tr>
         </thead>
         <tbody>
+          {!services ||
+            (!services.length && (
+              <p className="alert alert-danger">No services available!</p>
+            ))}
           {services.length > 0 &&
             services.map((service, index) => (
               <tr className="cp-invoice-services-list" key={index}>
