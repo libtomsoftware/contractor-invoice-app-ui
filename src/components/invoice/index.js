@@ -54,7 +54,7 @@ Invoice.propTypes = {
   company: PropTypes.object.isRequired,
   invoice: PropTypes.object.isRequired,
   settings: PropTypes.object.isRequired,
-  services: PropTypes.array.isRequired
+  services: PropTypes.array
 };
 
 function mapStateToProps(state) {

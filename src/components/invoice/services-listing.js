@@ -34,7 +34,13 @@ const ServicesListing = props => {
         <tbody>
           {!services ||
             (!services.length && (
-              <p className="alert alert-danger">No services available!</p>
+              <tr className="cp-invoice-no-services">
+                <td>
+                  <span className="alert alert-danger">
+                    No services available!
+                  </span>
+                </td>
+              </tr>
             ))}
           {services.length > 0 &&
             services.map((service, index) => (

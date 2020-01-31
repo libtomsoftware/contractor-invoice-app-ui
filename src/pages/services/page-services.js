@@ -38,7 +38,7 @@ class PageServices extends Component {
     this.setState({
       newService: Object.assign(
         {
-          quantity: 5
+          quantity: 1
         },
         services[services.length - 1],
         this.state.newService,

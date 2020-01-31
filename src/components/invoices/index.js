@@ -15,7 +15,7 @@ const Invoices = props => {
         <tr>
           <th scope="col">number</th>
           <th scope="col">when</th>
-          <th scope="col">for</th>
+          <th scope="col">client</th>
           <th scope="col">total</th>
           <th scope="col">actions</th>
         </tr>

@@ -6,6 +6,7 @@ import { bindActionCreators } from "redux";
 import * as clientActions from "../../actions/client-actions";
 import * as companyActions from "../../actions/company-actions";
 import * as settingsActions from "../../actions/settings-actions";
+import * as servicesActions from "../../actions/services-actions";
 import * as loaderActions from "../../actions/loader-actions";
 import * as invoiceActions from "../../actions/invoice-actions";
 import DataLoader from "../../services/data-loader";
@@ -40,7 +41,7 @@ class PageInvoice extends Component {
       return;
     }
 
-    DataLoader.load(this.props, ["settings", "company", "client"]);
+    DataLoader.load(this.props, ["settings", "company", "client", "services"]);
   }
 
   saveInvoice() {
@@ -138,14 +139,12 @@ function mapDispatchToProps(dispatch) {
       company: bindActionCreators(companyActions, dispatch),
       invoice: bindActionCreators(invoiceActions, dispatch),
       settings: bindActionCreators(settingsActions, dispatch),
+      services: bindActionCreators(servicesActions, dispatch),
       loader: bindActionCreators(loaderActions, dispatch)
     }
   };
 }
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(PageInvoice)
+  connect(mapStateToProps, mapDispatchToProps)(PageInvoice)
 );
