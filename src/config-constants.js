@@ -13,6 +13,6 @@ export const CONFIG = {
     }
   },
   URL: {
-    API: "https://1k4n94l4og.execute-api.eu-west-2.amazonaws.com/prod/api"
+    API: "https://xx2fape33d.execute-api.eu-west-2.amazonaws.com/prod/api"
   }
 };
