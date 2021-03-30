@@ -9,11 +9,11 @@ const propTypes = {
   reg: PropTypes.string,
   vat: PropTypes.string,
   paymentDetails: PropTypes.exact({
-    internationalBankNumber: PropTypes.string,
     bankName: PropTypes.string,
     sortCode: PropTypes.string,
     accountNumber: PropTypes.string,
-    accountName: PropTypes.string
+    accountName: PropTypes.string,
+    swift: PropTypes.string,
   }),
   representative: PropTypes.exact({
     name: PropTypes.string,

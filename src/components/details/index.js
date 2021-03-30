@@ -76,11 +76,6 @@ class Details extends Component {
   get paymentDetailsFields() {
     return [
       {
-        id: "internationalBankNumber",
-        label: "International Bank Number",
-        parent: "paymentDetails"
-      },
-      {
         id: "bankName",
         label: "Bank name",
         parent: "paymentDetails"
@@ -99,7 +94,17 @@ class Details extends Component {
         id: "accountName",
         label: "Account name",
         parent: "paymentDetails"
-      }
+      },
+      {
+        id: "internationalBankNumber",
+        label: "International Bank Number",
+        parent: "paymentDetails"
+      },
+      {
+        id: "swift",
+        label: "SWIFT",
+        parent: "paymentDetails"
+      },
     ];
   }
 

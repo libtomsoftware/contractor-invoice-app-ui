@@ -81,13 +81,13 @@ class AmendMiscellaneous extends Component {
               <input
                 type="checkbox"
                 className="custom-control-input"
-                name="internationalBankNumber"
+                name="showInternationalBankNumber"
                 checked={this.state.showInternationalBankNumber}
                 onChange={this.handleShowInternationalBankNumber}
               />
               <label
                 className="custom-control-label"
-                htmlFor="internationalBankNumber"
+                htmlFor="showInternationalBankNumber"
                 onClick={this.handleShowInternationalBankNumber}
               >
                 <span className="control-label-limited">Show international bank account number?</span>

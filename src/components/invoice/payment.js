@@ -7,7 +7,8 @@ const Payment = props => {
     sortCode,
     accountNumber,
     accountName,
-    internationalBankNumber
+    internationalBankNumber,
+    swift
   } = props.paymentDetails;
 
   return (
@@ -46,6 +47,10 @@ const Payment = props => {
           <p>
             <span>IBAN</span>
             {internationalBankNumber}
+          </p>
+          <p>
+            <span>SWIFT</span>
+            {swift}
           </p>
         </div>
       }
