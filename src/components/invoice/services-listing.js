@@ -1,7 +1,8 @@
-import React from "react";
 import Calculator from "../../services/calculator";
+import React from "react";
 
 const ServicesListing = props => {
+  const { invoice } = props;
   const { currency, vatPercentage } = props.settings;
 
   const services = Calculator.computeServices(
@@ -26,8 +27,8 @@ const ServicesListing = props => {
             <th>Quantity</th>
             <th>Discount %</th>
             <th>Total (Net)</th>
-            <th>VAT %</th>
-            <th>VAT amount</th>
+            {!invoice.isHideVatFields && <th>VAT %</th>}
+            {!invoice.isHideVatFields && <th>VAT amount</th>}
             <th>Gross</th>
           </tr>
         </thead>
@@ -50,10 +51,12 @@ const ServicesListing = props => {
                 <td>{service.quantity}</td>
                 <td>{service.discountPercentage}%</td>
                 <td>{Calculator.formatToCurrency(service.net, currency)}</td>
-                <td>{vatPercentage}%</td>
-                <td>
-                  {Calculator.formatToCurrency(service.vatAmount, currency)}
-                </td>
+                {!invoice.isHideVatFields && <td>{vatPercentage}%</td>}
+                {!invoice.isHideVatFields &&
+                  <td>
+                    {Calculator.formatToCurrency(service.vatAmount, currency)}
+                  </td>
+                }
                 <td>{Calculator.formatToCurrency(service.gross, currency)}</td>
               </tr>
             ))}
@@ -63,8 +66,8 @@ const ServicesListing = props => {
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
+            {!invoice.isHideVatFields && <td>&nbsp;</td>}
+            {!invoice.isHideVatFields && <td>&nbsp;</td>}
             <td className="summary-data">Total discount</td>
             <td className="summary-data">
               {Calculator.formatToCurrency(totalDiscountAmount, currency)}
@@ -75,33 +78,35 @@ const ServicesListing = props => {
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
+            {!invoice.isHideVatFields && <td>&nbsp;</td>}
+            {!invoice.isHideVatFields && <td>&nbsp;</td>}
             <td className="summary-data">Sub Total</td>
             <td className="summary-data">
               {Calculator.formatToCurrency(subtotal, currency)}
             </td>
           </tr>
-          <tr className="summary summary-subtotal">
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td className="summary-data">Total VAT {vatPercentage}%</td>
-            <td className="summary-data">
-              {Calculator.formatToCurrency(totalVatAmount, currency)}
-            </td>
-          </tr>
+          {!invoice.isHideVatFields &&
+            <tr className="summary summary-subtotal">
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td className="summary-data">Total VAT {vatPercentage}%</td>
+              <td className="summary-data">
+                {Calculator.formatToCurrency(totalVatAmount, currency)}
+              </td>
+            </tr>
+          }
 
           <tr className="summary summary-total">
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
+            {!invoice.isHideVatFields && <td>&nbsp;</td>}
+            {!invoice.isHideVatFields && <td>&nbsp;</td>}
             <td className="summary-data">TOTAL DUE</td>
             <td className="summary-data">
               {Calculator.formatToCurrency(totalDue, currency)}

@@ -1,9 +1,12 @@
+import "./quick-menu.css";
+
 import React, { Component } from "react";
-import AmendQuantity from "./amend-quantity";
+
 import AmendInvoiceDate from "./amend-invoice-date";
 import AmendInvoiceNumber from "./amend-invoice-number";
+import AmendMiscellaneous from "./amend-miscellaneous";
 import AmendPeriodBoundaries from "./amend-period-boundaries";
-import "./quick-menu.css";
+import AmendQuantity from "./amend-quantity";
 
 class InvoiceQuickMenu extends Component {
   render() {
@@ -13,6 +16,7 @@ class InvoiceQuickMenu extends Component {
         <AmendInvoiceNumber />
         <AmendPeriodBoundaries />
         <AmendQuantity />
+        <AmendMiscellaneous />
       </div>
     );
   }

@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { PropTypes } from "prop-types";
-import { bindActionCreators } from "redux";
-
-import DataLoader from "../../services/data-loader";
-import { CONFIG } from "../../config-constants";
-
 import * as clientActions from "../../actions/client-actions";
 import * as companyActions from "../../actions/company-actions";
 import * as toastActions from "../../actions/toast-actions";
+
+import React, { Component } from "react";
+
+import { CONFIG } from "../../config-constants";
+import DataLoader from "../../services/data-loader";
+import { PropTypes } from "prop-types";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 
 class Details extends Component {
   constructor() {
@@ -76,8 +76,8 @@ class Details extends Component {
   get paymentDetailsFields() {
     return [
       {
-        id: "paymentMethod",
-        label: "Payment method",
+        id: "internationalBankNumber",
+        label: "International Bank Number",
         parent: "paymentDetails"
       },
       {

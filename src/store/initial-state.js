@@ -12,7 +12,9 @@ export default {
   invoice: {
     date: DateFormatter.getInvoiceDate(),
     number: DateFormatter.getInvoiceNumber(3),
-    periodBoundaries: DateFormatter.getPeriodBoundaries()
+    periodBoundaries: DateFormatter.getPeriodBoundaries(),
+    isHideVatFields: false,
+    showInternationalBankNumber: false
   },
   // services: [
   //   {

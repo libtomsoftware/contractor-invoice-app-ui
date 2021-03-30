@@ -45,10 +45,12 @@ const Header = props => {
             <span>Company Reg No</span>
             {company.reg}
           </p>
-          <p>
-            <span>VAT Reg No</span>
-            {company.vat}
-          </p>
+          {!invoice.isHideVatFields &&
+            <p>
+              <span>VAT Reg No</span>
+              {company.vat}
+            </p>
+          }
         </div>
       </div>
     </div>

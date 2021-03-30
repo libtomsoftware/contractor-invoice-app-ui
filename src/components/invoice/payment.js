@@ -1,35 +1,54 @@
 import React from "react";
 
 const Payment = props => {
+  const { showInternationalBankNumber } = props.invoice;
   const {
-    paymentMethod,
     bankName,
     sortCode,
     accountNumber,
-    accountName
+    accountName,
+    internationalBankNumber
   } = props.paymentDetails;
 
   return (
     <div className="cp-invoice-payment">
       <strong>Payment method</strong>
-      <p>{paymentMethod}</p>
+
+      {!showInternationalBankNumber &&
+        <p>Direct Bank Transfer</p>
+      }
+      {showInternationalBankNumber &&
+        <p>International Bank Transfer</p>
+      }
       <p>&nbsp;</p>
       <p>
         <span>Bank name</span>
         {bankName}
       </p>
-      <p>
-        <span>Sort Code</span>
-        {sortCode}
-      </p>
-      <p>
-        <span>Account number</span>
-        {accountNumber}
-      </p>
-      <p>
-        <span>Account name</span>
-        {accountName}
-      </p>
+      {!showInternationalBankNumber &&
+        <div>
+          <p>
+            <span>Sort Code</span>
+            {sortCode}
+          </p>
+          <p>
+            <span>Account number</span>
+            {accountNumber}
+          </p>
+          <p>
+            <span>Account name</span>
+            {accountName}
+          </p>
+        </div>
+      }
+      {showInternationalBankNumber &&
+        <div>
+          <p>
+            <span>IBAN</span>
+            {internationalBankNumber}
+          </p>
+        </div>
+      }
     </div>
   );
 };

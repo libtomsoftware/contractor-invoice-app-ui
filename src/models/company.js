@@ -9,7 +9,7 @@ const propTypes = {
   reg: PropTypes.string,
   vat: PropTypes.string,
   paymentDetails: PropTypes.exact({
-    paymentMethod: PropTypes.string,
+    internationalBankNumber: PropTypes.string,
     bankName: PropTypes.string,
     sortCode: PropTypes.string,
     accountNumber: PropTypes.string,

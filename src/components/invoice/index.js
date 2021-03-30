@@ -1,14 +1,15 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { PropTypes } from "prop-types";
-
-import Header from "./header";
-import BrandBar from "./brand-bar";
-import ServicesListing from "./services-listing";
-import Payment from "./payment";
-import Signature from "./signature";
-import InvoiceFooter from "./footer";
 import "./invoice.css";
+
+import React, { Component } from "react";
+
+import BrandBar from "./brand-bar";
+import Header from "./header";
+import InvoiceFooter from "./footer";
+import Payment from "./payment";
+import { PropTypes } from "prop-types";
+import ServicesListing from "./services-listing";
+import Signature from "./signature";
+import { connect } from "react-redux";
 
 class Invoice extends Component {
   constructor() {
@@ -36,8 +37,8 @@ class Invoice extends Component {
         <BrandBar company={company} />
         <div className="cp-invoice-inner">
           <Header client={client} company={company} invoice={invoice} />
-          <ServicesListing services={services} settings={settings} />
-          <Payment paymentDetails={company.paymentDetails} />
+          <ServicesListing invoice={invoice} services={services} settings={settings} />
+          <Payment paymentDetails={company.paymentDetails} invoice={invoice} />
           <Signature
             name={company.representative.name}
             function={company.representative.function}
