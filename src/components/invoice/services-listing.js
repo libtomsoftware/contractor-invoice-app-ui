@@ -17,6 +17,8 @@ const ServicesListing = props => {
     totalDue
   } = Calculator.computeSubtotalDiscountAndVat(services);
 
+  const derivedInvoiceCurrency = services && services[0] ? services[0].currency : currency;
+
   return (
     <div className="cp-invoice-services">
       <table cellPadding="0" cellSpacing="0">
@@ -70,7 +72,7 @@ const ServicesListing = props => {
             {!invoice.isHideVatFields && <td>&nbsp;</td>}
             <td className="summary-data">Total discount</td>
             <td className="summary-data">
-              {Calculator.formatToCurrency(totalDiscountAmount, currency)}
+              {Calculator.formatToCurrency(totalDiscountAmount, derivedInvoiceCurrency)}
             </td>
           </tr>
           <tr className="summary summary-subtotal">
@@ -82,7 +84,7 @@ const ServicesListing = props => {
             {!invoice.isHideVatFields && <td>&nbsp;</td>}
             <td className="summary-data">Sub Total</td>
             <td className="summary-data">
-              {Calculator.formatToCurrency(subtotal, currency)}
+              {Calculator.formatToCurrency(subtotal, derivedInvoiceCurrency)}
             </td>
           </tr>
           {!invoice.isHideVatFields &&
@@ -95,7 +97,7 @@ const ServicesListing = props => {
               <td>&nbsp;</td>
               <td className="summary-data">Total VAT {vatPercentage}%</td>
               <td className="summary-data">
-                {Calculator.formatToCurrency(totalVatAmount, currency)}
+                {Calculator.formatToCurrency(totalVatAmount, derivedInvoiceCurrency)}
               </td>
             </tr>
           }
@@ -109,7 +111,7 @@ const ServicesListing = props => {
             {!invoice.isHideVatFields && <td>&nbsp;</td>}
             <td className="summary-data">TOTAL DUE</td>
             <td className="summary-data">
-              {Calculator.formatToCurrency(totalDue, currency)}
+              {Calculator.formatToCurrency(totalDue, derivedInvoiceCurrency)}
             </td>
           </tr>
         </tbody>

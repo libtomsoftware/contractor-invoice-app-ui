@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import Calculator from "../../services/calculator";
 
 const InvoiceEntry = props => {
@@ -33,12 +34,14 @@ const InvoiceEntry = props => {
     }
   }
 
+  const derivedInvoiceCurrency = services && services[0] && services[0].currency ? services[0].currency : currency;
+
   return (
     <tr className="table-active">
       <td>{entry.invoice.number}</td>
       <td>{entry.invoice.date}</td>
       <td>{entry.client.name}</td>
-      <td>{Calculator.formatToCurrency(totalDue, currency)}</td>
+      <td>{Calculator.formatToCurrency(totalDue, derivedInvoiceCurrency)}</td>
       <td className="invoice-action">
         <a
           href="menu-link-invoice"
