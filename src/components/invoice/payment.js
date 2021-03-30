@@ -49,7 +49,7 @@ const Payment = props => {
             {internationalBankNumber}
           </p>
           <p>
-            <span>SWIFT</span>
+            <span>SWIFTBIC</span>
             {swift}
           </p>
         </div>

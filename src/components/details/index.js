@@ -102,7 +102,7 @@ class Details extends Component {
       },
       {
         id: "swift",
-        label: "SWIFT",
+        label: "SWIFTBIC",
         parent: "paymentDetails"
       },
     ];
