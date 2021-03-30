@@ -47,17 +47,17 @@ const ServicesListing = props => {
             services.map((service, index) => (
               <tr className="cp-invoice-services-list" key={index}>
                 <td>{service.description}</td>
-                <td>{Calculator.formatToCurrency(service.price, currency)}</td>
+                <td>{Calculator.formatToCurrency(service.price, service.currency || currency)}</td>
                 <td>{service.quantity}</td>
                 <td>{service.discountPercentage}%</td>
-                <td>{Calculator.formatToCurrency(service.net, currency)}</td>
+                <td>{Calculator.formatToCurrency(service.net, service.currency || currency)}</td>
                 {!invoice.isHideVatFields && <td>{vatPercentage}%</td>}
                 {!invoice.isHideVatFields &&
                   <td>
-                    {Calculator.formatToCurrency(service.vatAmount, currency)}
+                    {Calculator.formatToCurrency(service.vatAmount, service.currency || currency)}
                   </td>
                 }
-                <td>{Calculator.formatToCurrency(service.gross, currency)}</td>
+                <td>{Calculator.formatToCurrency(service.gross, service.currency || currency)}</td>
               </tr>
             ))}
 

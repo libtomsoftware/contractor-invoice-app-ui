@@ -1,22 +1,27 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { PropTypes } from "prop-types";
-import { bindActionCreators } from "redux";
-
-import DataLoader from "../../services/data-loader";
+import "./page-services.css";
 
 import * as servicesActions from "../../actions/services-actions";
+import * as settingsActions from "../../actions/settings-actions";
 import * as toastActions from "../../actions/toast-actions";
 
+import React, { Component } from "react";
+
+import DataLoader from "../../services/data-loader";
 import Footer from "../../components/common/footer/footer";
-import "./page-services.css";
+import { PropTypes } from "prop-types";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 
 class PageServices extends Component {
   constructor() {
     super();
 
     this.state = {
-      newService: null
+      newService: null,
+      currency: {
+        symbol: '£',
+        symbolInFront: true
+      }
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -26,16 +31,35 @@ class PageServices extends Component {
   }
 
   componentWillMount() {
-    DataLoader.load(this.props, ["services"]);
+    DataLoader.load(this.props, ["settings", "services"]);
+  }
+
+  componentDidUpdate(prevProps) {
+    const { settings } = this.props;
+
+    if (prevProps.settings === null && !!settings) {
+      this.setState({
+        currency: settings.currency
+      });
+    }
   }
 
   handleInputChange(event) {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
+    const parent = target.getAttribute("parent");
     const services = Array.from(this.props.services || []);
+    let currency = this.state.currency;
+
+    if (parent && parent === 'currency') {
+      currency = { ...currency, ...{
+        [name]: value
+      }};
+    }
 
     this.setState({
+      currency,
       newService: Object.assign(
         {
           quantity: 1
@@ -44,7 +68,8 @@ class PageServices extends Component {
         this.state.newService,
         {
           [name]: value
-        }
+        },
+        { currency: { ...currency } }
       )
     });
   }
@@ -128,8 +153,12 @@ class PageServices extends Component {
   }
 
   render() {
-    const { services } = this.props;
+    const { services, settings } = this.props;
     const { newService } = this.state;
+
+    if (!settings) {
+      return null;
+    }
 
     return (
       <div className="page page-services">
@@ -145,6 +174,7 @@ class PageServices extends Component {
                         <th>description</th>
                         <th>price</th>
                         <th>discount</th>
+                        <th>currency</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -153,6 +183,7 @@ class PageServices extends Component {
                           <td>{service.description}</td>
                           <td>{service.price}</td>
                           <td>{service.discountPercentage}%</td>
+                          <td>{service.currency ? service.currency.symbol : settings.currency.symbol}</td>
                         </tr>
                       ))}
                       {!!this.state.newService && (
@@ -166,6 +197,7 @@ class PageServices extends Component {
                               ? "%"
                               : ""}
                           </td>
+                          <td>{newService.currency.symbol}</td>
                         </tr>
                       )}
                     </tbody>
@@ -235,6 +267,46 @@ class PageServices extends Component {
                         onChange={this.handleInputChange}
                       />
                     </div>
+                      <div className="form-group">
+                        <label className="control-label" htmlFor="symbol">
+                          Currency
+                        </label>
+                        <select
+                          className="custom-select"
+                          onChange={this.handleInputChange}
+                          name="symbol"
+                          parent="currency"
+                          value={this.state.currency.symbol}
+                        >
+                          <option value="£">£</option>
+                          <option value="$">$</option>
+                        </select>
+                      </div>
+                      <div className="form-group">
+                        <div className="custom-control custom-checkbox">
+                          <input
+                            type="checkbox"
+                            className="custom-control-input"
+                            name="symbolInFront"
+                            checked={this.state.currency.symbolInFront}
+                            onChange={this.handleInputChange}
+                            parent="currency"
+                            id="symbolInFront"
+                          />
+                          <label
+                            className="custom-control-label"
+                            htmlFor="symbolInFront"
+                            onClick={() =>
+                              this.triggerInputChange(
+                                "symbolInFront",
+                                !!!this.state.currency.symbolInFront
+                              )
+                            }
+                          >
+                            Symbol in front
+                          </label>
+                        </div>
+                      </div>
                   </fieldset>
                 </div>
                 <div className="form-buttons">
@@ -255,19 +327,22 @@ class PageServices extends Component {
 
 PageServices.propTypes = {
   config: PropTypes.object.isRequired,
-  services: PropTypes.array
+  services: PropTypes.array,
+  settings: PropTypes.object
 };
 
 function mapStateToProps(state) {
   return {
     config: state.config,
-    services: state.services
+    services: state.services,
+    settings: state.settings
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
+      settings: bindActionCreators(settingsActions, dispatch),
       services: bindActionCreators(servicesActions, dispatch),
       toast: bindActionCreators(toastActions, dispatch)
     }

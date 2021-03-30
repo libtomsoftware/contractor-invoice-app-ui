@@ -13,6 +13,7 @@ const propTypes = {
     sortCode: PropTypes.string,
     accountNumber: PropTypes.string,
     accountName: PropTypes.string,
+    internationalBankNumber: PropTypes.string,
     swift: PropTypes.string,
   }),
   representative: PropTypes.exact({
