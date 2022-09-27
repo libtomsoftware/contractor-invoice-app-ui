@@ -24,11 +24,11 @@ class Calculator {
   }
 
   computeServices(servicesFromProps, vatPercentage) {
-    const services = servicesFromProps.map(service =>
+    const services = servicesFromProps.map((service) =>
       Object.assign({}, service)
     );
 
-    return services.map(service => {
+    return services.map((service) => {
       service.discountAmount = this.calculateDiscountAmount(
         service.price,
         service.discountPercentage
@@ -45,7 +45,7 @@ class Calculator {
     let totalVatAmount = 0;
     let totalDiscountAmount = 0;
 
-    services.forEach(service => {
+    services.forEach((service) => {
       subtotal += service.net;
       totalDiscountAmount += service.discountAmount;
       totalVatAmount += service.vatAmount;
@@ -55,7 +55,7 @@ class Calculator {
       subtotal,
       totalDiscountAmount,
       totalVatAmount,
-      totalDue: subtotal + totalVatAmount
+      totalDue: subtotal + totalVatAmount,
     };
   }
 }

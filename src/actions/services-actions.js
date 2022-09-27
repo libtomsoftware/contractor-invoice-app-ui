@@ -1,31 +1,32 @@
-import axios from "axios";
-import * as types from "./action-types";
 import * as loaderActions from "./loader-actions";
-import { CONFIG } from "../config-constants";
 import * as toastActions from "./toast-actions";
+import * as types from "./action-types";
+
+import { CONFIG } from "../config-constants";
+import axios from "axios";
 
 function getServicesUpdateEvent(services) {
   return {
     type: types.SERVICES_UPDATE,
-    services
+    services,
   };
 }
 
 function showToast(message, type, dispatch) {
   toastActions.show({
     message,
-    type
+    type,
   })(dispatch);
 }
 
 export function update(services) {
-  return function(dispatch) {
+  return function (dispatch) {
     dispatch(getServicesUpdateEvent(services));
   };
 }
 
 export function load() {
-  return async function(dispatch) {
+  return async function (dispatch) {
     loaderActions.show()(dispatch);
     try {
       const { data } = await axios.get(`${CONFIG.URL.API}/data/services`);
@@ -39,8 +40,9 @@ export function load() {
 }
 
 export function save(services) {
-  return async function(dispatch) {
+  return async function (dispatch) {
     loaderActions.show()(dispatch);
+    console.log("services update", services);
     try {
       const { data } = await axios.post(
         `${CONFIG.URL.API}/data/services`,

@@ -18,14 +18,8 @@ class Invoice extends Component {
   }
 
   render() {
-    const {
-      settings,
-      invoice,
-      company,
-      client,
-      services,
-      isExistingInvoice
-    } = this.props;
+    const { settings, invoice, company, client, services, isExistingInvoice } =
+      this.props;
 
     return (
       <div className="cp-invoice">
@@ -37,7 +31,11 @@ class Invoice extends Component {
         <BrandBar company={company} />
         <div className="cp-invoice-inner">
           <Header client={client} company={company} invoice={invoice} />
-          <ServicesListing invoice={invoice} services={services} settings={settings} />
+          <ServicesListing
+            invoice={invoice}
+            services={services}
+            settings={settings}
+          />
           <Payment paymentDetails={company.paymentDetails} invoice={invoice} />
           <Signature
             name={company.representative.name}
@@ -55,13 +53,13 @@ Invoice.propTypes = {
   company: PropTypes.object.isRequired,
   invoice: PropTypes.object.isRequired,
   settings: PropTypes.object.isRequired,
-  services: PropTypes.array
+  services: PropTypes.array,
 };
 
 function mapStateToProps(state) {
   return {
     invoice: state.invoice,
-    services: state.services
+    services: state.services,
   };
 }
 

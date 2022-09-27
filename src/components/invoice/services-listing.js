@@ -1,7 +1,7 @@
 import Calculator from "../../services/calculator";
 import React from "react";
 
-const ServicesListing = props => {
+const ServicesListing = (props) => {
   const { invoice } = props;
   const { currency, vatPercentage } = props.settings;
 
@@ -10,14 +10,15 @@ const ServicesListing = props => {
     vatPercentage
   );
 
-  let {
-    subtotal,
-    totalDiscountAmount,
-    totalVatAmount,
-    totalDue
-  } = Calculator.computeSubtotalDiscountAndVat(services);
+  let { subtotal, totalDiscountAmount, totalVatAmount, totalDue } =
+    Calculator.computeSubtotalDiscountAndVat(services);
 
-  const derivedInvoiceCurrency = services && services[0] ? services[0].currency : currency;
+  let derivedInvoiceCurrency =
+    services && services[0] ? services[0].currency : currency;
+
+  if (!derivedInvoiceCurrency) {
+    derivedInvoiceCurrency = currency;
+  }
 
   return (
     <div className="cp-invoice-services">
@@ -49,17 +50,35 @@ const ServicesListing = props => {
             services.map((service, index) => (
               <tr className="cp-invoice-services-list" key={index}>
                 <td>{service.description}</td>
-                <td>{Calculator.formatToCurrency(service.price, service.currency || currency)}</td>
+                <td>
+                  {Calculator.formatToCurrency(
+                    service.price,
+                    service.currency || currency
+                  )}
+                </td>
                 <td>{service.quantity}</td>
                 <td>{service.discountPercentage}%</td>
-                <td>{Calculator.formatToCurrency(service.net, service.currency || currency)}</td>
+                <td>
+                  {Calculator.formatToCurrency(
+                    service.net,
+                    service.currency || currency
+                  )}
+                </td>
                 {!invoice.isHideVatFields && <td>{vatPercentage}%</td>}
-                {!invoice.isHideVatFields &&
+                {!invoice.isHideVatFields && (
                   <td>
-                    {Calculator.formatToCurrency(service.vatAmount, service.currency || currency)}
+                    {Calculator.formatToCurrency(
+                      service.vatAmount,
+                      service.currency || currency
+                    )}
                   </td>
-                }
-                <td>{Calculator.formatToCurrency(service.gross, service.currency || currency)}</td>
+                )}
+                <td>
+                  {Calculator.formatToCurrency(
+                    service.gross,
+                    service.currency || currency
+                  )}
+                </td>
               </tr>
             ))}
 
@@ -72,7 +91,10 @@ const ServicesListing = props => {
             {!invoice.isHideVatFields && <td>&nbsp;</td>}
             <td className="summary-data">Total discount</td>
             <td className="summary-data">
-              {Calculator.formatToCurrency(totalDiscountAmount, derivedInvoiceCurrency)}
+              {Calculator.formatToCurrency(
+                totalDiscountAmount,
+                derivedInvoiceCurrency
+              )}
             </td>
           </tr>
           <tr className="summary summary-subtotal">
@@ -87,7 +109,7 @@ const ServicesListing = props => {
               {Calculator.formatToCurrency(subtotal, derivedInvoiceCurrency)}
             </td>
           </tr>
-          {!invoice.isHideVatFields &&
+          {!invoice.isHideVatFields && (
             <tr className="summary summary-subtotal">
               <td>&nbsp;</td>
               <td>&nbsp;</td>
@@ -97,10 +119,13 @@ const ServicesListing = props => {
               <td>&nbsp;</td>
               <td className="summary-data">Total VAT {vatPercentage}%</td>
               <td className="summary-data">
-                {Calculator.formatToCurrency(totalVatAmount, derivedInvoiceCurrency)}
+                {Calculator.formatToCurrency(
+                  totalVatAmount,
+                  derivedInvoiceCurrency
+                )}
               </td>
             </tr>
-          }
+          )}
 
           <tr className="summary summary-total">
             <td>&nbsp;</td>

@@ -2,13 +2,9 @@ import React, { useState } from "react";
 
 import Calculator from "../../services/calculator";
 
-const InvoiceEntry = props => {
-  const {
-    entry,
-    settings,
-    viewCurrentInvoiceMethod,
-    deleteInvoiceMethod
-  } = props;
+const InvoiceEntry = (props) => {
+  const { entry, settings, viewCurrentInvoiceMethod, deleteInvoiceMethod } =
+    props;
   const { currency, vatPercentage } = settings;
   const [showDelete, setShowDelete] = useState(false);
   const [invoiceToDelete, setInvoiceToDelete] = useState(null);
@@ -34,7 +30,10 @@ const InvoiceEntry = props => {
     }
   }
 
-  const derivedInvoiceCurrency = services && services[0] && services[0].currency ? services[0].currency : currency;
+  const derivedInvoiceCurrency =
+    services && services[0] && services[0].currency
+      ? services[0].currency
+      : currency;
 
   return (
     <tr className="table-active">
@@ -47,7 +46,7 @@ const InvoiceEntry = props => {
           href="menu-link-invoice"
           className="fas fa-file-invoice text-info"
           title="view"
-          onClick={event => {
+          onClick={(event) => {
             viewCurrentInvoiceMethod(event, entry);
           }}
         >
@@ -58,7 +57,7 @@ const InvoiceEntry = props => {
             href="menu-link-invoice"
             className="fas fa-trash-alt text-danger"
             title="show delete button"
-            onClick={event => {
+            onClick={(event) => {
               toggleShowDelete(event, entry);
             }}
           >

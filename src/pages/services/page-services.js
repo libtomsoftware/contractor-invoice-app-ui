@@ -19,9 +19,9 @@ class PageServices extends Component {
     this.state = {
       newService: null,
       currency: {
-        symbol: '£',
-        symbolInFront: true
-      }
+        symbol: "£",
+        symbolInFront: true,
+      },
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -39,7 +39,7 @@ class PageServices extends Component {
 
     if (prevProps.settings === null && !!settings) {
       this.setState({
-        currency: settings.currency
+        currency: settings.currency,
       });
     }
   }
@@ -52,25 +52,28 @@ class PageServices extends Component {
     const services = Array.from(this.props.services || []);
     let currency = this.state.currency;
 
-    if (parent && parent === 'currency') {
-      currency = { ...currency, ...{
-        [name]: value
-      }};
+    if (parent && parent === "currency") {
+      currency = {
+        ...currency,
+        ...{
+          [name]: value,
+        },
+      };
     }
 
     this.setState({
       currency,
       newService: Object.assign(
         {
-          quantity: 1
+          quantity: 1,
         },
         services[services.length - 1],
         this.state.newService,
         {
-          [name]: value
+          [name]: value,
         },
         { currency: { ...currency } }
-      )
+      ),
     });
   }
 
@@ -83,7 +86,7 @@ class PageServices extends Component {
 
     if (newService) {
       this.setState({
-        newService: null
+        newService: null,
       });
 
       this.triggerInputChange("description", "");
@@ -110,7 +113,7 @@ class PageServices extends Component {
 
     if (newService) {
       this.setState({
-        newService: null
+        newService: null,
       });
 
       this.triggerInputChange("description", "");
@@ -143,7 +146,7 @@ class PageServices extends Component {
       this.props.actions.services.save(jointServices);
 
       this.setState({
-        newService: null
+        newService: null,
       });
     }
   }
@@ -183,7 +186,11 @@ class PageServices extends Component {
                           <td>{service.description}</td>
                           <td>{service.price}</td>
                           <td>{service.discountPercentage}%</td>
-                          <td>{service.currency ? service.currency.symbol : settings.currency.symbol}</td>
+                          <td>
+                            {service.currency
+                              ? service.currency.symbol
+                              : settings.currency.symbol}
+                          </td>
                         </tr>
                       ))}
                       {!!this.state.newService && (
@@ -267,46 +274,46 @@ class PageServices extends Component {
                         onChange={this.handleInputChange}
                       />
                     </div>
-                      <div className="form-group">
-                        <label className="control-label" htmlFor="symbol">
-                          Currency
-                        </label>
-                        <select
-                          className="custom-select"
+                    <div className="form-group">
+                      <label className="control-label" htmlFor="symbol">
+                        Currency
+                      </label>
+                      <select
+                        className="custom-select"
+                        onChange={this.handleInputChange}
+                        name="symbol"
+                        parent="currency"
+                        value={this.state.currency.symbol}
+                      >
+                        <option value="£">£</option>
+                        <option value="$">$</option>
+                      </select>
+                    </div>
+                    <div className="form-group">
+                      <div className="custom-control custom-checkbox">
+                        <input
+                          type="checkbox"
+                          className="custom-control-input"
+                          name="symbolInFront"
+                          checked={this.state.currency.symbolInFront}
                           onChange={this.handleInputChange}
-                          name="symbol"
                           parent="currency"
-                          value={this.state.currency.symbol}
+                          id="symbolInFront"
+                        />
+                        <label
+                          className="custom-control-label"
+                          htmlFor="symbolInFront"
+                          onClick={() =>
+                            this.triggerInputChange(
+                              "symbolInFront",
+                              !!!this.state.currency.symbolInFront
+                            )
+                          }
                         >
-                          <option value="£">£</option>
-                          <option value="$">$</option>
-                        </select>
+                          Symbol in front
+                        </label>
                       </div>
-                      <div className="form-group">
-                        <div className="custom-control custom-checkbox">
-                          <input
-                            type="checkbox"
-                            className="custom-control-input"
-                            name="symbolInFront"
-                            checked={this.state.currency.symbolInFront}
-                            onChange={this.handleInputChange}
-                            parent="currency"
-                            id="symbolInFront"
-                          />
-                          <label
-                            className="custom-control-label"
-                            htmlFor="symbolInFront"
-                            onClick={() =>
-                              this.triggerInputChange(
-                                "symbolInFront",
-                                !!!this.state.currency.symbolInFront
-                              )
-                            }
-                          >
-                            Symbol in front
-                          </label>
-                        </div>
-                      </div>
+                    </div>
                   </fieldset>
                 </div>
                 <div className="form-buttons">
@@ -328,14 +335,14 @@ class PageServices extends Component {
 PageServices.propTypes = {
   config: PropTypes.object.isRequired,
   services: PropTypes.array,
-  settings: PropTypes.object
+  settings: PropTypes.object,
 };
 
 function mapStateToProps(state) {
   return {
     config: state.config,
     services: state.services,
-    settings: state.settings
+    settings: state.settings,
   };
 }
 
@@ -344,8 +351,8 @@ function mapDispatchToProps(dispatch) {
     actions: {
       settings: bindActionCreators(settingsActions, dispatch),
       services: bindActionCreators(servicesActions, dispatch),
-      toast: bindActionCreators(toastActions, dispatch)
-    }
+      toast: bindActionCreators(toastActions, dispatch),
+    },
   };
 }
 
