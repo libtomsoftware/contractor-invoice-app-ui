@@ -29,7 +29,7 @@
     "firebase": "^7.7.0",
     "fs-extra": "3.0.1",
     "history": "3.2.1",
-    "html-webpack-plugin": "2.29.0",
+    "html-webpack-plugin": "5.5.0",
     "jest": "20.0.4",
     "moment": "^2.22.1",
     "object-assign": "4.1.1",
